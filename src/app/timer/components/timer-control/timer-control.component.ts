@@ -6,23 +6,21 @@ import { TimerCommunicationService } from '../../timer-communication.service';
 @Component({
   selector: 'app-timer-control',
   templateUrl: './timer-control.component.html',
-  styleUrls: ['./timer-control.component.scss']
+  styleUrls: ['./timer-control.component.scss'],
 })
 export class TimerControlComponent implements OnInit, OnDestroy {
-
   control = new FormControl('', Validators.required);
   actions: any[] = [];
   start = false;
   pausedTime = null;
   subscriptions: Subscription[] = [];
 
-  constructor(private timercom: TimerCommunicationService) { }
+  constructor(private timercom: TimerCommunicationService) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
       this.timercom.currentTime.subscribe((val) => {
         if (val || null) {
-          console.log('control null', val);
           this.pausedTime = val;
         }
       })
@@ -30,7 +28,6 @@ export class TimerControlComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.control.valueChanges.subscribe((val) => {
         if (val) {
-          console.log('val', val);
           this.timercom.currentTime.next(null);
           this.pausedTime = null;
         }
@@ -38,11 +35,15 @@ export class TimerControlComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**
+   *@author kranthi kumar reddy
+   *@method To start/pause timer
+   * @memberof TimerControlComponent
+   */
+
   timerAction() {
     if (this.control.valid) {
-      console.log('timer action', this.control.value);
       this.start = !this.start;
-      console.log('After', this.pausedTime);
       const timer = {
         type: this.start ? 'Started' : 'Paused',
         value: this.pausedTime ? this.pausedTime : this.control.value,
@@ -62,8 +63,13 @@ export class TimerControlComponent implements OnInit, OnDestroy {
     this.control.reset({ emitEvent: false });
   }
 
-  ngOnDestroy() {
+  /**
+   *@author Kranthi Kumar Reddy
+   *@method To unscribe observable subscriptions
+   * @memberof TimerControlComponent
+   */
+
+  ngOnDestroy(): void {
     this.subscriptions.forEach((val) => val.unsubscribe());
   }
-
 }
