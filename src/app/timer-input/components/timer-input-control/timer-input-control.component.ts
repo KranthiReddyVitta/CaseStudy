@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -7,16 +7,22 @@ import { Subscription } from 'rxjs';
   templateUrl: './timer-input-control.component.html',
   styleUrls: ['./timer-input-control.component.scss']
 })
-export class TimerInputControlComponent implements OnInit {
+export class TimerInputControlComponent implements OnInit, OnChanges {
 
   control = new FormControl('', Validators.required);
-  actions:any[] = [];
+  actions: any[] = [];
   start = false;
   pausedTime = null;
   @Output() timerEvent = new EventEmitter<any>();
+  @Input() currentTime: any;
   subscriptions: Subscription[] = [];
 
-  constructor() {}
+  constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.pausedTime = changes['currentTime'].currentValue
+  }
+
 
   ngOnInit() {
     this.subscriptions.push(
