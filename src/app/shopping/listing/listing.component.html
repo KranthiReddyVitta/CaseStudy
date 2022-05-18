@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="d-flex align-items-center justify-content-end mb-2">
+      <div class="icons mr-2">
+        <span
+          class="grid d-block"
+          [ngClass]="{ selected: displayType == true }"
+          (click)="changeDisplayType('grid')"
+          >Grid</span
+        >
+        <span
+          class="list d-block"
+          [ngClass]="{ selected: displayType == false }"
+          (click)="changeDisplayType('list')"
+          >List</span
+        >
+      </div>
+      <div class="sort">
+        <select (change)="onSortChange($event)">
+          <option *ngFor="let price of sortOptions" [value]="price.value">
+            {{ price.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row justify-content-center ">
+      <div
+        class="mb-4 d-flex justify-content-center"
+        [ngClass]="displayType == true ? grid : list"
+        *ngFor="let products of products"
+      >
+        <div class="card product-item justify-content-center align-items-center">
+          <div>{{ products.name }}</div>
+          <span>${{ products.price }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

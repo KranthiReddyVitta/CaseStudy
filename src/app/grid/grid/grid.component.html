@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" sortable="Name" (sort)="onSort($event)">Name</th>
+            <th scope="col" sortable="Class" (sort)="onSort($event)">Class</th>
+            <th scope="col" sortable="Section" (sort)="onSort($event)">Section</th>
+            <th scope="col" sortable="Sub1" (sort)="onSort($event)">Sub1</th>
+            <th scope="col" sortable="Sub2" (sort)="onSort($event)">Sub2</th>
+            <th scope="col" sortable="Sub3" (sort)="onSort($event)">Sub3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let country of list; index as i">
+            <td>
+                {{ country.Name }}
+            </td>
+            <td>{{ country.Class }}</td>
+            <td>{{ country.Section }}</td>
+            <td>{{ country.Sub1 }}</td>
+            <td>{{ country.Sub2 }}</td>
+            <td>{{ country.Sub3 }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+.product-item {
+    height: 150px;
+    width: 150px;
+    border: 1px solid black;
+}
+
+.icons {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 1rem;
+}
+
+.grid {
+    border-right: 1px solid black;
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.list {
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: aquamarine;
+}
