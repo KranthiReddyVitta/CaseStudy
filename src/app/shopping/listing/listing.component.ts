@@ -41,8 +41,7 @@ export class ListingComponent implements OnInit {
 
   onSortChange(event: any) {
     let value = event.target.value;
-    console.log('event', value);
-    if (value == true) {
+    if (value == "true") {
       this.getSortedProducts(true, this.products);
     } else {
       this.getSortedProducts(false, this.products);
