@@ -1,0 +1,4 @@
+<ng-container *ngFor="let stamp of stamps">
+    <h3>{{ stamp.type }} at {{ stamp.log | date: 'MM-d-YYYY' }}
+        {{stamp.log | date:'h:mm:ss'}}</h3>
+</ng-container>

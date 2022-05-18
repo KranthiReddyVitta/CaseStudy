@@ -30,11 +30,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./scroll/scroll.module').then((m) => m.ScrollModule),
   },
-  // {
-  //   path: 'timer-input',
-  //   loadChildren: () =>
-  //     import('./timer-input/timer-input.module').then((m) => m.TimerInputModule),
-  // },
+  {
+    path: 'timer-input',
+    loadChildren: () =>
+      import('./timer-input/timer-input.module').then((m) => m.TimerInputModule),
+  },
   {
     path: '',
     redirectTo: 'nest',
