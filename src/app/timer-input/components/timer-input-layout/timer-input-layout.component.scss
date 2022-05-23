@@ -1,5 +1,8 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
+
 .timer-layout {
-    border: 1px solid black;
-    padding: 2rem;
-    margin: 1rem;
+    border: toRem(1) solid $black;
+    padding: toRem(32);
+    margin: toRem(16);
 }

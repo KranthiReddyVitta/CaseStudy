@@ -3,15 +3,14 @@ import { Component, HostListener, OnInit } from '@angular/core';
 @Component({
   selector: 'app-scroll',
   templateUrl: './scroll.component.html',
-  styleUrls: ['./scroll.component.scss']
+  styleUrls: ['./scroll.component.scss'],
 })
 export class ScrollComponent implements OnInit {
-
   elements = [1, 2, 3, 4];
   count = 4;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   @HostListener('window:scroll', [])
   onScroll(): void {
@@ -27,5 +26,4 @@ export class ScrollComponent implements OnInit {
   alertButton(value: any) {
     window.alert(`Button ${value} clicked`);
   }
-
 }

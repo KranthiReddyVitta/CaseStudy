@@ -8,6 +8,7 @@ import { TimerCommunicationService } from '../../timer-communication.service';
   templateUrl: './timer-control.component.html',
   styleUrls: ['./timer-control.component.scss'],
 })
+
 export class TimerControlComponent implements OnInit, OnDestroy {
   control = new FormControl('', Validators.required);
   actions: any[] = [];
@@ -18,6 +19,16 @@ export class TimerControlComponent implements OnInit, OnDestroy {
   constructor(private timercom: TimerCommunicationService) {}
 
   ngOnInit(): void {
+    this.manageSubscriptions();
+  }
+
+  /**
+   *@author kranthi kumar reddy
+   *@method Subscribe to current Time and paused time
+   *@memberof TimerControlComponent
+   */
+
+  manageSubscriptions() {
     this.subscriptions.push(
       this.timercom.currentTime.subscribe((val) => {
         if (val || null) {
@@ -38,7 +49,7 @@ export class TimerControlComponent implements OnInit, OnDestroy {
   /**
    *@author kranthi kumar reddy
    *@method To start/pause timer
-   * @memberof TimerControlComponent
+   *@memberof TimerControlComponent
    */
 
   timerAction() {
@@ -55,6 +66,12 @@ export class TimerControlComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   *@author kranthi kumar reddy
+   *@method To reset timer
+   *@memberof TimerControlComponent
+   */
+
   reset() {
     this.timercom.reset();
     this.start = false;
@@ -65,8 +82,8 @@ export class TimerControlComponent implements OnInit, OnDestroy {
 
   /**
    *@author Kranthi Kumar Reddy
-   *@method To unscribe observable subscriptions
-   * @memberof TimerControlComponent
+   *@method To unsubscribe observable subscriptions
+   *@memberof TimerControlComponent
    */
 
   ngOnDestroy(): void {

@@ -1,4 +1,7 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
+
 .timer-display {
-    border: 1px solid black;
-    height: 150px;
+    border: toRem(1) solid $black;
+    height: toRem(150);
 }

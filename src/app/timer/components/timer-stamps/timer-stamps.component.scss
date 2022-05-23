@@ -1,3 +1,6 @@
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
+
 h3 {
-    font-size: 14px;
+    font-size: toRem(14);
 }

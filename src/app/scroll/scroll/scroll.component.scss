@@ -1,9 +1,12 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
 .box {
-    height: 200px;
-    width: 200px;
-    border: 1px solid black;
+    height: toRem(200);
+    width: toRem(200);
+    border: toRem(1) solid $black;
     position: relative;
-    margin: 2rem;
+    margin: toRem(32);
 }
 
 button {

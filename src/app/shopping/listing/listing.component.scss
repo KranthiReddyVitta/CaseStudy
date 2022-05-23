@@ -1,28 +1,33 @@
-.product-item {
-    height: 150px;
-    width: 150px;
-    border: 1px solid black;
-}
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
 
-.icons {
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-right: 1rem;
-}
+.listing {
+    .product-item {
+        height: toRem(150);
+        width: toRem(150);
+        border: toRem(1) solid black;
+    }
 
-.grid {
-    border-right: 1px solid black;
-    padding: 0.3rem;
-    cursor: pointer;
-}
+    .icons {
+        border: toRem(1) solid black;
+        border-radius: toRem(10);
+        display: flex;
+        justify-content: space-evenly;
+        margin-right: toRem(1);
+    }
 
-.list {
-    padding: 0.3rem;
-    cursor: pointer;
-}
+    .grid {
+        border-right: toRem(1) solid black;
+        padding: 0.3rem;
+        cursor: pointer;
+    }
 
-.selected {
-    background-color: aquamarine;
+    .list {
+        padding: 0.3rem;
+        cursor: pointer;
+    }
+
+    .selected {
+        background-color: aquamarine;
+    }
 }

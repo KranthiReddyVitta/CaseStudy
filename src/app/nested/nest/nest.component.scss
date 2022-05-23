@@ -1,9 +1,12 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
 .nested {
     div {
-        min-height: 100px;
-        min-width: 100px;
-        padding: 30px;
-        border: 1px solid black;
+        min-height: toRem(100);
+        min-width: toRem(100);
+        padding: toRem(30);
+        border: toRem(1) solid $black;
     }
 
     p {

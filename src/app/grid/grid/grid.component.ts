@@ -47,18 +47,14 @@ export class GridComponent implements OnInit {
 
   ngOnInit() { }
 
-  debugger: any;
-  onSort({ column, direction }: SortEvent) {
-    console.log(column);
-    // resetting other headers
 
+  onSort({ column, direction }: SortEvent) {
     this.headers.forEach((header: any) => {
       if (header.sortable !== column) {
         header.direction = '';
       }
     });
 
-    // sorting countries
     if (direction === '' || column === '') {
       this.list = this.countries.slice();
     } else {

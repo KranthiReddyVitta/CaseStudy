@@ -1,14 +1,24 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-timer-input-control',
   templateUrl: './timer-input-control.component.html',
-  styleUrls: ['./timer-input-control.component.scss']
+  styleUrls: ['./timer-input-control.component.scss'],
 })
-export class TimerInputControlComponent implements OnInit, OnChanges {
-
+export class TimerInputControlComponent
+  implements OnInit, OnChanges, OnDestroy
+{
   control = new FormControl('', Validators.required);
   actions: any[] = [];
   start = false;
@@ -17,12 +27,11 @@ export class TimerInputControlComponent implements OnInit, OnChanges {
   @Input() currentTime: any;
   subscriptions: Subscription[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.pausedTime = changes['currentTime'].currentValue
+    this.pausedTime = changes['currentTime'].currentValue;
   }
-
 
   ngOnInit() {
     this.subscriptions.push(
@@ -34,6 +43,13 @@ export class TimerInputControlComponent implements OnInit, OnChanges {
     );
   }
 
+
+
+  /**
+   * @author kranthi kumar reddy
+   * @method To emit timer events
+   * @memberof TimerInputControlComponent
+   */
   timerAction() {
     if (this.control.valid) {
       this.start = !this.start;
@@ -50,6 +66,13 @@ export class TimerInputControlComponent implements OnInit, OnChanges {
     }
   }
 
+
+
+  /**
+   * @author kranthi kumar reddy
+   * @method To reset timer
+   * @memberof TimerInputControlComponent
+   */
   reset() {
     this.start = false;
     this.pausedTime = null;
@@ -57,4 +80,7 @@ export class TimerInputControlComponent implements OnInit, OnChanges {
     this.control.reset({ emitEvent: false });
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((val) => val.unsubscribe());
+  }
 }

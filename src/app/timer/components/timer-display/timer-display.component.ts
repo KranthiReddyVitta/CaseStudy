@@ -4,14 +4,13 @@ import { TimerCommunicationService } from '../../timer-communication.service';
 @Component({
   selector: 'app-timer-display',
   templateUrl: './timer-display.component.html',
-  styleUrls: ['./timer-display.component.scss']
+  styleUrls: ['./timer-display.component.scss'],
 })
 export class TimerDisplayComponent implements OnInit {
-
   time: any = null;
   timerInterval: any;
 
-  constructor(private timerCom: TimerCommunicationService) { }
+  constructor(private timerCom: TimerCommunicationService) {}
 
   ngOnInit(): void {
     this.timerCom.timerLast.subscribe((val: any) => {
@@ -21,6 +20,12 @@ export class TimerDisplayComponent implements OnInit {
     });
   }
 
+  /**
+   * @author kranthi kumar reddy
+   * @method To set coundown timer
+   * @param {*} val
+   * @memberof TimerDisplayComponent
+   */
   setInterval(val: any) {
     this.time = val.value;
     this.timerInterval = setInterval(() => {
@@ -33,11 +38,18 @@ export class TimerDisplayComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+   * @author kranthi kumar reddy
+   * @method To reset timer
+   * @param {*} val
+   * @param {boolean} [bool=true]
+   * @memberof TimerDisplayComponent
+   */
+
   clear(val: any, bool = true) {
     console.log('Clear ', val);
     clearInterval(this.timerInterval);
     if (bool) this.time = val.value;
     this.timerCom.currentTime.next(this.time);
   }
-
 }
