@@ -3,5 +3,5 @@
 
 .timer-display {
     border: toRem(1) solid $black;
-    height: toRem(150);
+    min-height: toRem(150);
 }

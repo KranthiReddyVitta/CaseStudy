@@ -23,6 +23,7 @@ export class TimerInputControlComponent
   actions: any[] = [];
   start = false;
   pausedTime = null;
+  pausedInterval: any = [];
   @Output() timerEvent = new EventEmitter<any>();
   @Input() currentTime: any;
   subscriptions: Subscription[] = [];
@@ -43,8 +44,6 @@ export class TimerInputControlComponent
     );
   }
 
-
-
   /**
    * @author kranthi kumar reddy
    * @method To emit timer events
@@ -58,6 +57,8 @@ export class TimerInputControlComponent
         value: this.pausedTime ? this.pausedTime : this.control.value,
         log: new Date(),
       };
+      if (!this.start)
+        this.pausedInterval.push({ type: 'Paused', value: this.pausedTime });
       this.actions.push(timer);
       this.timerEvent.emit({
         timers: this.actions,
@@ -65,8 +66,6 @@ export class TimerInputControlComponent
       //this.timercom.updateLast(this.actions[this.actions.length - 1]);
     }
   }
-
-
 
   /**
    * @author kranthi kumar reddy

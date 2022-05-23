@@ -21,4 +21,11 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <ng-container *ngFor="let paused of pausedInterval">
+                <p class="m-0">{{paused.type}} at {{paused.value}}</p>
+            </ng-container>
+        </div>
+    </div>
 </div>

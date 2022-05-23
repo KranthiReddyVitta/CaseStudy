@@ -4,7 +4,7 @@
 .timer-control {
     border: toRem(1) solid $black;
     padding: toRem(16);
-    height: toRem(150);
+    min-height: toRem(150);
     .gap {
         margin-right: toRem(16);
     }

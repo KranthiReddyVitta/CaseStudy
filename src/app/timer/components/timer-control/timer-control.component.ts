@@ -8,13 +8,13 @@ import { TimerCommunicationService } from '../../timer-communication.service';
   templateUrl: './timer-control.component.html',
   styleUrls: ['./timer-control.component.scss'],
 })
-
 export class TimerControlComponent implements OnInit, OnDestroy {
   control = new FormControl('', Validators.required);
   actions: any[] = [];
   start = false;
   pausedTime = null;
   subscriptions: Subscription[] = [];
+  pausedInterval: any[] = [];
 
   constructor(private timercom: TimerCommunicationService) {}
 
@@ -60,6 +60,8 @@ export class TimerControlComponent implements OnInit, OnDestroy {
         value: this.pausedTime ? this.pausedTime : this.control.value,
         log: new Date(),
       };
+      if (!this.start)
+        this.pausedInterval.push({ type: 'Paused', value: this.pausedTime });
       this.actions.push(timer);
       this.timercom.updateTimer(this.actions);
       this.timercom.updateLast(this.actions[this.actions.length - 1]);
