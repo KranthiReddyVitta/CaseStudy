@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Timer } from 'src/app/models/interfaces';
 import { TimerCommunicationService } from '../../timer-communication.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { TimerCommunicationService } from '../../timer-communication.service';
 })
 export class TimerControlComponent implements OnInit, OnDestroy {
   control = new FormControl('', Validators.required);
-  actions: Timer[] = [];
+  actions: any[] = [];
   start = false;
   pausedTime = null;
   subscriptions: Subscription[] = [];

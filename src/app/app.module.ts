@@ -47,11 +47,9 @@ const routes: Routes = [
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-}),
+    RouterModule.forRoot(routes),
     HttpClientModule
   ],
   providers: [],
