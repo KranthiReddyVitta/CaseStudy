@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Timer } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-timer-input-control',
@@ -20,7 +21,7 @@ export class TimerInputControlComponent
   implements OnInit, OnChanges, OnDestroy
 {
   control = new FormControl('', Validators.required);
-  actions: any[] = [];
+  actions: Timer[] = [];
   start = false;
   pausedTime = null;
   pausedInterval: any = [];
