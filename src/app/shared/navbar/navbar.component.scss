@@ -1,0 +1,9 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+nav {
+    margin-bottom: toRem(48);
+    a {
+        color: $black !important;
+    }
+}
