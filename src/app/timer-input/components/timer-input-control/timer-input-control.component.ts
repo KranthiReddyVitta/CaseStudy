@@ -60,24 +60,32 @@ export class TimerInputControlComponent
       };
       if (!this.start)
         this.pausedInterval.push({ type: 'Paused', value: this.pausedTime });
-      this.actions.push(timer);
-      this.timerEvent.emit({
-        timers: this.actions,
-      });
+      this.updateTimers(timer);
+
       //this.timercom.updateLast(this.actions[this.actions.length - 1]);
     }
   }
 
+  updateTimers(val: Timer) {
+    this.actions.push(val);
+    this.timerEvent.emit({
+      timers: this.actions,
+    });
+  }
   /**
    * @author kranthi kumar reddy
    * @method To reset timer
    * @memberof TimerInputControlComponent
    */
   reset() {
+    const timer = {
+      type: 'Reset',
+      value: this.control.value,
+      log: new Date(),
+    };
     this.start = false;
     this.pausedTime = null;
-    this.actions = [];
-    this.control.reset({ emitEvent: false });
+    this.updateTimers(timer);
   }
 
   ngOnDestroy(): void {

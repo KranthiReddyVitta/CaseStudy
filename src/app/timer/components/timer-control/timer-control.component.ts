@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Timer } from 'src/app/models/interfaces';
+import { positiveNumber } from 'src/app/validators/validators';
 import { TimerCommunicationService } from '../../timer-communication.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { TimerCommunicationService } from '../../timer-communication.service';
   styleUrls: ['./timer-control.component.scss'],
 })
 export class TimerControlComponent implements OnInit, OnDestroy {
-  control = new FormControl('', Validators.required);
+  control = new FormControl('', [Validators.required, positiveNumber()]);
   actions: Timer[] = [];
   start = false;
   pausedTime = null;
@@ -38,7 +39,7 @@ export class TimerControlComponent implements OnInit, OnDestroy {
       })
     );
     this.subscriptions.push(
-      this.control.valueChanges.subscribe((val) => {
+      this.control.valueChanges.subscribe((val: any) => {
         if (val) {
           this.timercom.currentTime.next(null);
           this.pausedTime = null;
@@ -63,10 +64,14 @@ export class TimerControlComponent implements OnInit, OnDestroy {
       };
       if (!this.start)
         this.pausedInterval.push({ type: 'Paused', value: this.pausedTime });
-      this.actions.push(timer);
-      this.timercom.updateTimer(this.actions);
-      this.timercom.updateLast(this.actions[this.actions.length - 1]);
+      this.updateTimers(timer);
     }
+  }
+
+  updateTimers(val: Timer) {
+    this.actions.push(val);
+    this.timercom.updateTimer(this.actions);
+    this.timercom.updateLast(this.actions[this.actions.length - 1]);
   }
 
   /**
@@ -76,11 +81,14 @@ export class TimerControlComponent implements OnInit, OnDestroy {
    */
 
   reset() {
-    this.timercom.reset();
+    const timer = {
+      type: 'Reset',
+      value: this.control.value,
+      log: new Date(),
+    };
     this.start = false;
     this.pausedTime = null;
-    this.actions = [];
-    this.control.reset({ emitEvent: false });
+    this.updateTimers(timer);
   }
 
   /**
