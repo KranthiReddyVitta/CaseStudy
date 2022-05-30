@@ -1,4 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { SortDirective, SortEvent } from '../sort.directive';
 
 const compare = (v1: string | number, v2: string | number) =>
@@ -7,10 +8,9 @@ const compare = (v1: string | number, v2: string | number) =>
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
-
   @ViewChildren(SortDirective)
   headers!: QueryList<SortDirective>;
 
@@ -43,11 +43,27 @@ export class GridComponent implements OnInit {
 
   list = this.countries.slice();
 
-  constructor() { }
+  constructor(private meta: Meta) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.addTags();
+  }
+
+  addTags() {
+    this.meta.addTag({
+      name: 'description',
+      content: 'Sortable table',
+    });
+  }
 
 
+
+  /**
+   * @author kranthi kumar reddy
+   * @method To sort data
+   * @param {SortEvent} { column, direction }
+   * @memberof GridComponent
+   */
   onSort({ column, direction }: SortEvent) {
     this.headers.forEach((header: any) => {
       if (header.sortable !== column) {
@@ -64,5 +80,4 @@ export class GridComponent implements OnInit {
       });
     }
   }
-
 }

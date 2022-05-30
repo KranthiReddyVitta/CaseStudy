@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { TimerTypes } from 'src/app/constants/constants';
 import { TimerCommunicationService } from '../../timer-communication.service';
 
@@ -14,10 +15,18 @@ export class TimerCountComponent implements OnInit {
   start = 0;
   pause = 0;
 
-  constructor(private timerCom: TimerCommunicationService) {}
+  constructor(private timerCom: TimerCommunicationService, private meta:Meta) {}
 
   ngOnInit(): void {
     this.getTimeStamps();
+    this.addTags();
+  }
+
+  addTags() {
+    this.meta.addTag({
+      name: 'description',
+      content: 'Timer using subject',
+    });
   }
 
   /**

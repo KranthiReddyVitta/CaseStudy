@@ -1,17 +1,17 @@
-<table class="table table-striped">
+<table class="table table-striped table-responsive">
     <thead>
         <tr>
-            <th scope="col" sortable="Name" (sort)="onSort($event)">Name</th>
-            <th scope="col" sortable="Class" (sort)="onSort($event)">Class</th>
-            <th scope="col" sortable="Section" (sort)="onSort($event)">Section</th>
-            <th scope="col" sortable="Sub1" (sort)="onSort($event)">Sub1</th>
-            <th scope="col" sortable="Sub2" (sort)="onSort($event)">Sub2</th>
-            <th scope="col" sortable="Sub3" (sort)="onSort($event)">Sub3</th>
+            <th scope="col" tabindex="0" sortable="Name" (sort)="onSort($event)">Name</th>
+            <th scope="col" tabindex="0" sortable="Class" (sort)="onSort($event)">Class</th>
+            <th scope="col" tabindex="0" sortable="Section" (sort)="onSort($event)">Section</th>
+            <th scope="col" tabindex="0" sortable="Sub1" (sort)="onSort($event)">Sub1</th>
+            <th scope="col" tabindex="0" sortable="Sub2" (sort)="onSort($event)">Sub2</th>
+            <th scope="col" tabindex="0" sortable="Sub3" (sort)="onSort($event)">Sub3</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let country of list; index as i">
-            <td>
+        <tr tabindex="0" scope="row" *ngFor="let country of list; index as i">
+            <td >
                 {{ country.Name }}
             </td>
             <td>{{ country.Class }}</td>

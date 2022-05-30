@@ -31,6 +31,18 @@
     }
 
     .selected {
-        background-color: aquamarine;
+        background-color: #ffd43b;
+    }
+
+    .align-sort {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .align-sort {
+        justify-content: center !important;
     }
 }

@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-scroll',
@@ -8,9 +9,18 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class ScrollComponent implements OnInit {
   elements = [1, 2, 3, 4];
   count = 4;
-  constructor() {}
+  constructor(private meta:Meta) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addTags()
+  }
+
+  addTags() {
+    this.meta.addTag({
+      name: 'description',
+      content: 'Scroll div',
+    });
+  }
 
   @HostListener('window:scroll', [])
   onScroll(): void {

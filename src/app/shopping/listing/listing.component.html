@@ -1,10 +1,10 @@
 <div class="container listing">
-  <div class="d-flex align-items-center justify-content-end mb-2">
+  <div class="d-flex align-items-center justify-content-end align-sort mb-2 ">
     <div class="icons mr-2">
       <span class="grid d-block" [ngClass]="{ selected: displayType == true }"
-        (click)="changeDisplayType('grid')">Grid</span>
-      <span class="list d-block" [ngClass]="{ selected: displayType == false }"
-        (click)="changeDisplayType('list')">List</span>
+        (click)="changeDisplayType('grid')" tabindex="0" aria-label="Grid View">Grid</span>
+      <span class="list d-block" tabindex="0" [ngClass]="{ selected: displayType == false }"
+        (click)="changeDisplayType('list')" aria-label="List View">List</span>
     </div>
     <div class="sort">
       <select (change)="onSortChange($event)">
@@ -18,8 +18,8 @@
     <div class="mb-4 d-flex justify-content-center" [ngClass]="displayType == true ? grid : list"
       *ngFor="let products of products">
       <div class="card product-item justify-content-center align-items-center">
-        <div>{{ products.name }}</div>
-        <span>${{ products.price }}</span>
+        <div tabindex="0">{{ products.name }}</div>
+        <span tabindex="0">${{ products.price }}</span>
       </div>
     </div>
   </div>

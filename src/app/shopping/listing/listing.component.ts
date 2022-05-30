@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ProductsService } from '../products.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ListingComponent implements OnInit {
   grid = 'col-lg-3 col-md-3 col-xl-3 col-sm-6 col-12';
   list = 'col-lg-6 col-md-6 col-xl-6 col-sm-6 col-12';
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService, private meta: Meta) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -22,8 +23,15 @@ export class ListingComponent implements OnInit {
       { label: 'Price Low to High', value: true },
       { label: 'Price High to Low', value: false },
     ];
+    this.addTags();
   }
 
+  addTags() {
+    this.meta.addTag({
+      name: 'description',
+      content: 'This is a listing page of products',
+    });
+  }
   /**
    * @author Kranthi kumar Reddy
    * @param {boolean} bool
@@ -31,7 +39,7 @@ export class ListingComponent implements OnInit {
    * @method To sort list
    * @memberof ListingComponent
    */
-  
+
   getSortedProducts(bool: boolean, value: any[]): void {
     this.products =
       bool == true

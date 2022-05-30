@@ -25,3 +25,15 @@
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    div {
+        min-height: toRem(40) !important;
+        min-width: toRem(40) !important;
+        padding: toRem(10) !important;
+    }
+
+    p {
+        font-size: 12px !important;
+    }
+}
