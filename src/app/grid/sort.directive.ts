@@ -20,6 +20,7 @@ const rotate: { [key: string]: SortDirection } = {
     '[class.asc]': 'direction === "asc"',
     '[class.desc]': 'direction === "desc"',
     '(click)': 'rotate()',
+    '(keydown)':'rotate()'
   },
 })
 export class SortDirective {
