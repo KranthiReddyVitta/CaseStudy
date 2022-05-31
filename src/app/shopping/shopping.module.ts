@@ -15,7 +15,7 @@ const routes: Routes = [
     ListingComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes),
+    CommonModule, RouterModule.forChild(routes)
   ]
 })
 export class ShoppingModule { }
