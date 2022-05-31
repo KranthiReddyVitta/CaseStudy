@@ -10,7 +10,7 @@
 
     .icons {
         border: toRem(1) solid black;
-        border-radius: toRem(10);
+        // border-radius: toRem(10);
         display: flex;
         justify-content: space-evenly;
         margin-right: toRem(1);
@@ -18,7 +18,7 @@
 
     .grid {
         border-right: toRem(1) solid $black;
-        border-radius: toRem(10);
+        // border-radius: toRem(10);
         padding: 0.3rem;
         cursor: pointer;
     }
@@ -26,7 +26,7 @@
     .list {
         border-left: toRem(1) solid $black;
         padding: 0.3rem;
-        border-radius: toRem(10);
+        // border-radius: toRem(10);
         cursor: pointer;
     }
 

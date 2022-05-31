@@ -1,3 +1,15 @@
 th {
     cursor: pointer;
 }
+
+.asc {
+    background-image: url("../../../assets/icons/arrow-up.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.desc {
+    background-image: url("../../../assets/icons/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}

@@ -2,9 +2,9 @@
   <div class="d-flex align-items-center justify-content-end align-sort mb-2 ">
     <div class="icons mr-2">
       <span class="grid d-block" [ngClass]="{ selected: displayType == true }"
-        (click)="changeDisplayType('grid')" tabindex="0" aria-label="Grid View">Grid</span>
+        (click)="changeDisplayType('grid')" tabindex="0" aria-label="Grid View"><i class="bi bi-grid"></i></span>
       <span class="list d-block" tabindex="0" [ngClass]="{ selected: displayType == false }"
-        (click)="changeDisplayType('list')" aria-label="List View">List</span>
+        (click)="changeDisplayType('list')" aria-label="List View"><i class="bi bi-list"></i></span>
     </div>
     <div class="sort">
       <select (change)="onSortChange($event)">
