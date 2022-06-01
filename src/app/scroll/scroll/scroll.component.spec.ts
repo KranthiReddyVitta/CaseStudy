@@ -35,4 +35,10 @@ describe('ScrollComponent', () => {
       component.alertButton(3);
       fixture.detectChanges();
       expect(window.alert).toHaveBeenCalledWith("Button 3 clicked");}
+
+    it('should call scroll' , () => {
+      spyOn(component,'onScroll');
+      component.onScroll();
+      expect(component.elements.length).toEqual(4);
+    })
 });
