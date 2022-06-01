@@ -24,4 +24,14 @@ describe('ListingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change display type to grid' , () => {
+    component.changeDisplayType('grid');
+    expect(component.displayType).toEqual(true);
+  })
+
+  it('should change display type to list' , () => {
+    component.changeDisplayType('list');
+    expect(component.displayType).toEqual(false);
+  })
 });

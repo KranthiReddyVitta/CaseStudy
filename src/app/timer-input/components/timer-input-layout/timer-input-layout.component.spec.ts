@@ -8,9 +8,8 @@ describe('TimerInputLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimerInputLayoutComponent ]
-    })
-    .compileComponents();
+      declarations: [TimerInputLayoutComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,15 @@ describe('TimerInputLayoutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call listenTimer', () => {
+    component.listenTimer({ timers: [{ type: 'Started', value: 100 }] });
+    expect(component.timers).toEqual([{ type: 'Started', value: 100 }]);
+    expect(component.lastTimer).toEqual({ type: 'Started', value: 100 });
+  });
+
+  it('should set current time' , () => {
+    component.setCurrentTime(100);
+    expect(component.currentTime).toEqual(100);
+  })
 });

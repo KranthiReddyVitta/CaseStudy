@@ -8,7 +8,7 @@ import { Meta } from '@angular/platform-browser';
 })
 export class TimerInputLayoutComponent implements OnInit, OnChanges {
   timers: any[] = [];
-  lastTimer = null;
+  lastTimer:any = null;
   currentTime: any = null;
   constructor(private meta: Meta) {}
 

@@ -8,9 +8,8 @@ describe('ScrollComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScrollComponent ]
-    })
-    .compileComponents();
+      declarations: [ScrollComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,18 @@ describe('ScrollComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should increase scroll values'),
+    () => {
+      component.onScroll();
+      fixture.detectChanges();
+      expect(component.elements).toBe([1, 2, 3, 4, 5]);
+      expect(component.count).toEqual(5);
+    };
+
+    it("should call alert"), () => {
+      spyOn(window, "alert");
+      component.alertButton(3);
+      fixture.detectChanges();
+      expect(window.alert).toHaveBeenCalledWith("Button 3 clicked");}
 });

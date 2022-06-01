@@ -14,7 +14,7 @@ export class TimerControlComponent implements OnInit, OnDestroy {
   control = new FormControl('', [Validators.required, positiveNumber()]);
   actions: Timer[] = [];
   start = false;
-  pausedTime = null;
+  pausedTime:any = null;
   subscriptions: Subscription[] = [];
   pausedInterval: Timer[] = [];
 

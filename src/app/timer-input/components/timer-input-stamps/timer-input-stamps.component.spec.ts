@@ -8,9 +8,8 @@ describe('TimerInputStampsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimerInputStampsComponent ]
-    })
-    .compileComponents();
+      declarations: [TimerInputStampsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,18 @@ describe('TimerInputStampsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should display start/pause'),
+    () => {
+      const component = fixture.componentInstance;
+      component.stamps = [
+        { type: 'Started', val: 100 },
+        { type: 'Paused', val: 50 },
+      ];
+      fixture.detectChanges();
+      expect(component.stamps).toEqual([
+        { type: 'Started', val: 100 },
+        { type: 'Paused', val: 50 },
+      ]);
+    };
 });

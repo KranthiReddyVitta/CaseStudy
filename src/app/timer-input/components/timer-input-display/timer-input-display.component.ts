@@ -6,12 +6,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./timer-input-display.component.scss'],
 })
 export class TimerInputDisplayComponent implements OnInit {
-  @Input() set lastTimer(val: any) {
+ @Input() set lastTimer(val: any) {
     if (val) {
       val.type == 'Started' ? this.setInterval(val) : this.clear(val);
     }
   }
-  @Output() currentTime = new EventEmitter<any>();
+  @Output() currentTime:any = new EventEmitter<any>();
   time: any = null;
   timerInterval: any;
 

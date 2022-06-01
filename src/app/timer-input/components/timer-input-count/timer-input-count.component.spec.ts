@@ -8,9 +8,8 @@ describe('TimerInputCountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimerInputCountComponent ]
-    })
-    .compileComponents();
+      declarations: [TimerInputCountComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,12 @@ describe('TimerInputCountComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should display start/pause'),
+    () => {
+      spyOnProperty(component.stamps, 'set').and.callThrough();
+      fixture.detectChanges();
+      expect(component.start).toEqual(1);
+      expect(component.pause).toEqual(1);
+    };
 });

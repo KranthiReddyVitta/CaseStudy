@@ -7,19 +7,23 @@ import { TimerCommunicationService } from '../../timer-communication.service';
   styleUrls: ['./timer-display.component.scss'],
 })
 export class TimerDisplayComponent implements OnInit {
-  time: any = null;
+  time: any = null || '';
   timerInterval: any;
 
   constructor(private timerCom: TimerCommunicationService) {}
 
   ngOnInit(): void {
+    this.getTimer();
+  }
+
+  getTimer() {
     this.timerCom.timerLast.subscribe((val: any) => {
       if (val) {
         val.type == 'Started' ? this.setInterval(val) : this.clear(val);
       }
     });
   }
-
+   
   /**
    * @author kranthi kumar reddy
    * @method To set coundown timer

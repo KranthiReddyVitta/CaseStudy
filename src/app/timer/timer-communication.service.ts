@@ -6,9 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TimerCommunicationService {
 
-  timerStamps = new BehaviorSubject(null);
-  timerLast = new BehaviorSubject(null);
-  currentTime = new BehaviorSubject(null);
+  timerStamps = new BehaviorSubject<any>(null);
+  timerLast = new BehaviorSubject<any>(null);
+  currentTime = new BehaviorSubject<any>(null);
 
   constructor() { }
 
