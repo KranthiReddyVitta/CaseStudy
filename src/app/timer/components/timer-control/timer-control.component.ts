@@ -14,7 +14,7 @@ export class TimerControlComponent implements OnInit, OnDestroy {
   control = new FormControl('', [Validators.required, positiveNumber()]);
   actions: Timer[] = [];
   start = false;
-  pausedTime:any = null;
+  pausedTime: any = null;
   subscriptions: Subscription[] = [];
   pausedInterval: Timer[] = [];
 
@@ -81,14 +81,16 @@ export class TimerControlComponent implements OnInit, OnDestroy {
    */
 
   reset() {
-    const timer = {
-      type: 'Reset',
-      value: this.control.value,
-      log: new Date(),
-    };
-    this.start = false;
-    this.pausedTime = null;
-    this.updateTimers(timer);
+    if (this.control.valid) {
+      const timer = {
+        type: 'Reset',
+        value: this.control.value,
+        log: new Date(),
+      };
+      this.start = false;
+      this.pausedTime = null;
+      this.updateTimers(timer);
+    }
   }
 
   /**

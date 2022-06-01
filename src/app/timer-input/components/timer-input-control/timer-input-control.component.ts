@@ -78,14 +78,16 @@ export class TimerInputControlComponent
    * @memberof TimerInputControlComponent
    */
   reset() {
-    const timer = {
-      type: 'Reset',
-      value: this.control.value,
-      log: new Date(),
-    };
-    this.start = false;
-    this.pausedTime = null;
-    this.updateTimers(timer);
+    if (this.control.valid) {
+      const timer = {
+        type: 'Reset',
+        value: this.control.value,
+        log: new Date(),
+      };
+      this.start = false;
+      this.pausedTime = null;
+      this.updateTimers(timer);
+    }
   }
 
   ngOnDestroy(): void {
