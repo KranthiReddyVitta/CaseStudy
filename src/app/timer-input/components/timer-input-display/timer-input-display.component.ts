@@ -46,7 +46,6 @@ export class TimerInputDisplayComponent implements OnInit {
    */
   
   clear(val: any, bool = true) {
-    console.log('Clear ', val);
     clearInterval(this.timerInterval);
     if (bool) this.time = val.value;
     this.currentTime.emit(this.time);

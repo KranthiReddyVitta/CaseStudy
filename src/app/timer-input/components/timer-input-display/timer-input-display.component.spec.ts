@@ -52,8 +52,9 @@ describe('TimerInputDisplayComponent', () => {
 
   it('should emit event', () => {
     spyOn(component.currentTime, 'emit');
-    component.currentTime = 1;
-    component.clear({}, true);
+    component.clear({ type: 'Started', value: 100 }, true);
+    fixture.detectChanges();
+    expect(component.time).toEqual(100);
     expect(component.currentTime.emit).toHaveBeenCalled();
   });
 });
